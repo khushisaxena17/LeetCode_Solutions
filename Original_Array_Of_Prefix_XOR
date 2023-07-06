@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> findArray(vector<int>& pref) {
+        // vector<int>result;//Memory Limit is Exceeding!!!!!!!!!!!
+        int xora=pref[0];
+        for(int i=1;i<pref.size();i++){
+            xora=xora^pref[i];//not storing till i for further iterations
+            int t=pref[i];
+            pref[i]=xora;
+            xora=t;
+        }
+    return pref;
+
+    }
+};
