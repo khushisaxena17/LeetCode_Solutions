@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        vector<int>result;
+        unordered_map<int,int>mpp;
+        for(int n:nums){
+            mpp[n]=mpp[n]+1;
+        }
+        for(auto p:mpp){
+            if(p.second==1){
+                result.push_back(p.first);
+            }
+        }
+        return result;
+    }
+};
