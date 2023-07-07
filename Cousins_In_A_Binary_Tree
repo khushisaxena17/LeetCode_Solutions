@@ -1,0 +1,45 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+
+vector<TreeNode*> height(TreeNode* root,int value){
+    if(root->val==value){
+        vector<TreeNode*>path;
+        path.push_back(root);
+        return path;
+    }
+    vector<TreeNode*>result;
+    if(root->left!=NULL){
+       result= height(root->left,value);
+       if(result.size()>0){
+        result.push_back(root);
+       }
+    }
+    if(result.size()==0){
+    if(root->right!=NULL){
+        result=height(root->right,value);
+        if(result.size()>0){
+        result.push_back(root);
+       }
+    }
+    }
+    return result;
+}
+
+    bool isCousins(TreeNode* root, int x, int y) {
+
+        vector<TreeNode*> h1=height(root,x);
+        vector<TreeNode*> h2=height(root,y);
+        return (h1.size()-1==h2.size()-1 && h1[1]->val!=h2[1]->val)?true:false;
+    }
+};
