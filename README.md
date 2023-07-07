@@ -1,1 +1,1 @@
-This is a repository of all the leetcode solutions solved by me till date!
+This is a repository of some of  the leetcode solutions solved by me till date!
