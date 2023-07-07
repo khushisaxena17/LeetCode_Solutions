@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+SELECT d.unique_id,e.name FROM EmployeeUNI d RIGHT JOIN Employees e ON d.id=e.id;
