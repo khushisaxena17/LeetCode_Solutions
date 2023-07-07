@@ -1,0 +1,60 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class FindElements {
+public:
+// TreeNode* curr;
+set<int>nodes;
+//  nodes.insert(0);
+    FindElements(TreeNode* root) {
+        root->val=0;
+        nodes.insert(0);
+        // curr=root;
+        recover(root);
+        
+    }
+    void recover(TreeNode* root){
+        if(root==NULL)return;
+        if(root->left!=NULL){
+            root->left->val=2*root->val+1;
+            nodes.insert(root->left->val);
+            recover(root->left);
+        }
+        if(root->right!=NULL){
+            root->right->val=2*root->val+2;
+            nodes.insert(root->right->val);
+            recover(root->right);
+        }
+    }
+    // bool f(TreeNode* curr,int value){
+    //      if(curr->val==value) return true;
+    // if(curr->left!=NULL){
+    //     bool result=f(curr->left,value);
+    //     if(result==true) return true;
+    // }
+    // if(curr->right!=NULL){
+    //     bool result=f(curr->right,value);
+    //     if(result==true) return true;
+    // }
+    // return false;
+    // }//------>>>>>>>Alternative Approach!!!!!!!!!!!
+    bool find(int value) {
+    //    return f(curr,value);
+    if(nodes.find(value)!=nodes.end())return true;
+    return false;
+    }
+};
+
+/**
+ * Your FindElements object will be instantiated and called as such:
+ * FindElements* obj = new FindElements(root);
+ * bool param_1 = obj->find(target);
+ */
