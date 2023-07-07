@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int solver(vector<int>s,int a,int k){
+         int left=0,j=0;int maxi=0;int c=0;int t=0,f=0;
+        while(j<s.size()){
+            if(s[j]==a){
+                t++;
+            }
+            else{
+                f++;
+            }
+            while(f>k){
+                if(s[left]==a){
+                    t--;
+                }
+                else{
+                    f--;
+                }
+                left++;
+            }
+            maxi=max(maxi,j-left+1);
+            j++;
+        }
+        return maxi;/////sometimes changing the other one would be beneficial  
+    }
+    int longestOnes(vector<int>& nums, int k) {
+        return solver(nums,1,k);
+        // return (max(solver(nums,1,k),solver(nums,0,k)));
+    }
+};
